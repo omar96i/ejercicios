@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ejercicios Arreglo 10x5</title>
+	<script src="jquery-3.5.1.js"></script>
+	<style>
+		table{
+			text-align: center;
+			border: 2px solid;
+		}
+		tr,td{
+			border: 2px solid;
+			width: 300px;
+			height: 50px;
+		}
+		.dividir{
+			text-align: center;
+		}
+		.centrar{
+			margin-top: 10px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="dividir">
+		<table>
+			<tbody class="arreglo">
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="dividir centrar">
+		<button class="limpiar">Limpiar</button>
+	</div>
+	
+	<script>
+		$(document).ready(function() {
+			$("td").click(function(event) {
+				if ($(this).attr('inactivo')!="si") {
+					$(this).html("X");
+					$(this).attr('inactivo', 'si');
+					$(this).siblings().css('background', 'red');
+					$(this).siblings().attr('inactivo', 'si');
+					var lugar;
+					for (var i = 0; i < $(this).parent().children().length; i++) {
+						if($(this).parent().children().eq(i).html()=="X"){
+							lugar = i;
+						}
+					}
+					for (var i = 0; i < $(this).parents('tbody').children().length; i++) {
+						$('tbody').children().eq(i).children().eq(lugar).css('background', 'red');
+						$('tbody').children().eq(i).children().eq(lugar).attr('inactivo', 'si');
+					}
+				}	
+			});
+			$(".limpiar").click(function(event) {
+				$("tbody").children().css('background', 'white');
+				$("tbody").children().removeAttr('inactivo');
+				$("tbody").children().children().css('background', 'white');
+				$("tbody").children().children().removeAttr('inactivo');
+				for (var i = 0; i < $("tbody").children().length; i++) {
+					for (var j = 0; j < $("tbody").children().children().length; j++) {
+						$("tbody").children().eq(i).children().eq(j).html("");
+					}
+				}
+			});
+		});
+	</script>
+	
+</body>
+</html>
